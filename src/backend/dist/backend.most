@@ -1,0 +1,348 @@
+// Version: 1.0.0
+type ARCapture__1049494645 =
+  {
+    description : Text;
+    id : Text;
+    imageData : Text;
+    sceneId : Text;
+    timestamp : Timestamp__301639476;
+    title : Text;
+    userId : UserId__158757552
+  };
+type CourseCategory__697937372 =
+  {
+    #calligraphy;
+    #cooking;
+    #dance;
+    #martialArts;
+    #music;
+    #pottery;
+    #regionalArts;
+    #weaving;
+    #yoga
+  };
+type Course__869768811 =
+  {
+    category : CourseCategory__697937372;
+    createdAt : Timestamp__301639476;
+    description : Text;
+    durationMinutes : Nat;
+    id : ItemId__833640393;
+    imageUrl : Text;
+    instructorId : UserId__158757552;
+    instructorName : Text;
+    isLive : Bool;
+    maxParticipants : Nat;
+    price : Nat;
+    scheduledAt : ?Timestamp__301639476;
+    title : Text
+  };
+type DailyLesson__35387066 =
+  {
+    audioUrl : Text;
+    content : Text;
+    createdAt : Timestamp__301639476;
+    id : ItemId__833640393;
+    language : Text;
+    lessonNumber : Nat;
+    practiceWords : [Text];
+    title : Text
+  };
+type Data__791452850<K, V> =
+  {var count : Nat__490723111; kvs : [var ?(K, V)]};
+type Enrollment__239057919 =
+  {
+    certified : Bool;
+    completedAt : ?Timestamp__301639476;
+    courseId : ItemId__833640393;
+    enrolledAt : Timestamp__301639476;
+    id : ItemId__833640393;
+    progressPct : Nat;
+    userId : UserId__158757552
+  };
+type FamilyTimeline__233447135 =
+  {
+    createdAt : Timestamp__301639476;
+    description : Text;
+    itemIds : [ItemId__833640393];
+    title : Text;
+    updatedAt : Timestamp__301639476;
+    userId : UserId__158757552
+  };
+type FestivalPlan__100268312 =
+  {
+    createdAt : Timestamp__301639476;
+    familyParticipants : [Text];
+    festivalId : ItemId__833640393;
+    id : ItemId__833640393;
+    notes : Text;
+    reminderAt : ?Timestamp__301639476;
+    updatedAt : Timestamp__301639476;
+    userId : UserId__158757552
+  };
+type Festival__978544918 =
+  {
+    celebrationGuide : Text;
+    clothingSuggestions : [Text];
+    createdAt : Timestamp__301639476;
+    date : Text;
+    description : Text;
+    id : ItemId__833640393;
+    imageUrl : Text;
+    languages : [Text];
+    meaning : Text;
+    name : Text;
+    recipes : [Text];
+    region : Text;
+    rituals : [Text]
+  };
+type HeritageProfile__812702250 =
+  {
+    ancestryInsights : Text;
+    createdAt : Timestamp__301639476;
+    familyBackground : Text;
+    festivals : [Text];
+    foods : [Text];
+    forgottenCustoms : [Text];
+    grandparentsOrigin : Text;
+    language : Text;
+    migrationStory : Text;
+    region : Text;
+    surname : Text;
+    traditionalOccupations : [Text];
+    updatedAt : Timestamp__301639476;
+    userId : UserId__158757552
+  };
+type Internal__8484328<K, V> =
+  {children : [var ?Node__46230540<K, V>]; data : Data__791452850<K, V>};
+type ItemId__833640393 = Nat;
+type LanguageProgress__213215198 =
+  {
+    conversationLevel : Text;
+    currentLesson : Nat;
+    languageChosen : Text;
+    lastActiveAt : Timestamp__301639476;
+    pronunciationScore : Nat;
+    scriptsLearned : [Text];
+    startedAt : Timestamp__301639476;
+    streakDays : Nat;
+    totalLessonsCompleted : Nat;
+    userId : UserId__158757552;
+    wordsLearned : Nat
+  };
+type Leaf__809889148<K, V> = {data : Data__791452850<K, V>};
+type Listing__586492564 =
+  {
+    category : ProductCategory__702162164;
+    createdAt : Timestamp__301639476;
+    description : Text;
+    id : ItemId__833640393;
+    imageUrls : [Text];
+    isActive : Bool;
+    price : Nat;
+    region : Text;
+    sellerId : UserId__158757552;
+    stock : Nat;
+    title : Text;
+    updatedAt : Timestamp__301639476
+  };
+type MediaType__199861319 =
+  {#handwrittenNote; #letter; #photo; #video; #voiceNote};
+type MentorBooking__684350544 =
+  {
+    createdAt : Timestamp__301639476;
+    durationMinutes : Nat;
+    id : ItemId__833640393;
+    instructorId : UserId__158757552;
+    notes : Text;
+    scheduledAt : Timestamp__301639476;
+    status : Text;
+    userId : UserId__158757552
+  };
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type Node__46230540<K, V> =
+  {#internal : Internal__8484328<K, V>; #leaf : Leaf__809889148<K, V>};
+type OrderStatus__352169100 =
+  {#cancelled; #delivered; #paid; #pending; #shipped};
+type Order__308187248 =
+  {
+    buyerId : UserId__158757552;
+    createdAt : Timestamp__301639476;
+    id : ItemId__833640393;
+    listingId : ItemId__833640393;
+    quantity : Nat;
+    sellerId : UserId__158757552;
+    shippingAddress : Text;
+    status : OrderStatus__352169100;
+    stripeSessionId : Text;
+    totalPrice : Nat;
+    updatedAt : Timestamp__301639476
+  };
+type ProductCategory__702162164 =
+  {#art; #artisanProduct; #book; #craft; #instrument; #jewelry; #textile};
+type StoryItem__683091587 =
+  {
+    createdAt : Timestamp__301639476;
+    description : Text;
+    fileId : Text;
+    id : ItemId__833640393;
+    mediaType : MediaType__199861319;
+    narration : Text;
+    peopleTagged : [Text];
+    tags : [Text];
+    title : Text;
+    updatedAt : Timestamp__301639476;
+    userId : UserId__158757552;
+    yearApprox : ?Nat
+  };
+type Timestamp__301639476 = Int;
+type TraditionCategory__123051129 =
+  {
+    #celebration;
+    #clothing;
+    #custom;
+    #dance;
+    #folkSong;
+    #recipe;
+    #ritual;
+    #spiritualPractice
+  };
+type TraditionItem__82418906 =
+  {
+    category : TraditionCategory__123051129;
+    createdAt : Timestamp__301639476;
+    description : Text;
+    id : ItemId__833640393;
+    imageUrl : Text;
+    languages : [Text];
+    region : Text;
+    steps : [Text];
+    tags : [Text];
+    title : Text
+  };
+type UserId__158757552 = Principal;
+type UserProfile__1009003526 =
+  {
+    createdAt : Timestamp__301639476;
+    email : Text;
+    fullName : Text;
+    heritageRegion : Text;
+    languageInterests : [Text];
+    lastLoginAt : Timestamp__301639476;
+    principalId : UserId__158757552
+  };
+type UserTraditionPrefs__868074352 =
+  {
+    heritageLanguages : [Text];
+    heritageRegions : [Text];
+    savedItemIds : [ItemId__833640393];
+    updatedAt : Timestamp__301639476;
+    userId : UserId__158757552
+  };
+actor {
+  stable arCaptures :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?ARCapture__1049494645]];
+      var elementIndex : Nat__490723111
+    };
+  stable arCounter : {var val : Nat};
+  stable bookingCounter : {var val : Nat};
+  stable courseCounter : {var val : Nat};
+  stable courses :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Course__869768811]];
+      var elementIndex : Nat__490723111
+    };
+  stable enrollmentCounter : {var val : Nat};
+  stable enrollments :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Enrollment__239057919]];
+      var elementIndex : Nat__490723111
+    };
+  stable festivalCounter : {var val : Nat};
+  stable festivalPlans :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?FestivalPlan__100268312]];
+      var elementIndex : Nat__490723111
+    };
+  stable festivals :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Festival__978544918]];
+      var elementIndex : Nat__490723111
+    };
+  stable heritageProfiles :
+    {
+      var root : Node__46230540<UserId__158757552, HeritageProfile__812702250>;
+      var size : Nat__490723111
+    };
+  stable langLessons :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?DailyLesson__35387066]];
+      var elementIndex : Nat__490723111
+    };
+  stable langProgress :
+    {
+      var root :
+        Node__46230540<UserId__158757552, LanguageProgress__213215198>;
+      var size : Nat__490723111
+    };
+  stable lessonCounter : {var val : Nat};
+  stable listingCounter : {var val : Nat};
+  stable listings :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Listing__586492564]];
+      var elementIndex : Nat__490723111
+    };
+  stable mentorBookings :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?MentorBooking__684350544]];
+      var elementIndex : Nat__490723111
+    };
+  stable orderCounter : {var val : Nat};
+  stable orders :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Order__308187248]];
+      var elementIndex : Nat__490723111
+    };
+  stable planCounter : {var val : Nat};
+  stable storyCounter : {var val : Nat};
+  stable storyItems :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?StoryItem__683091587]];
+      var elementIndex : Nat__490723111
+    };
+  stable storyTimelines :
+    {
+      var root : Node__46230540<UserId__158757552, FamilyTimeline__233447135>;
+      var size : Nat__490723111
+    };
+  stable traditionCounter : {var val : Nat};
+  stable traditionPrefs :
+    {
+      var root :
+        Node__46230540<UserId__158757552, UserTraditionPrefs__868074352>;
+      var size : Nat__490723111
+    };
+  stable traditions :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?TraditionItem__82418906]];
+      var elementIndex : Nat__490723111
+    };
+  stable userProfiles :
+    {
+      var root : Node__46230540<UserId__158757552, UserProfile__1009003526>;
+      var size : Nat__490723111
+    }
+};

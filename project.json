@@ -1,0 +1,25 @@
+{
+  "overview": "ReviveRoots is a premium AI-powered cultural revival platform that helps users rediscover lost traditions, languages, crafts, and ancestral identities. Features a complete authentication system, 8 interactive heritage modules, and a personalized dashboard — all styled with a dark, heritage-themed glassmorphism UI.",
+  "features": [
+    "Complete signup and login with email, password, and full name validation",
+    "Persistent sessions using Internet Identity — stay logged in across visits",
+    "Personalized dashboard greeting users by name with activity stats",
+    "Protected routes for all 8 modules — unauthenticated users redirected to login",
+    "User profiles stored in backend canister linked to all activity",
+    "Heritage Scanner, Language Revival, AR Time Travel, StoryKeeper, Traditions, Digital Gurukul, Marketplace, Festival Planner modules",
+    "Password strength indicator, loading states, and clear error handling",
+    "Google-style authentication UI with passkey and biometrics support",
+    "Logout from anywhere in the app with session cleanup",
+    "Graceful forgot password flow directing to Caffeine support"
+  ],
+  "category": "productivity",
+  "tags": [
+    "cultural-heritage",
+    "authentication",
+    "ai-powered",
+    "internet-identity",
+    "personalized-dashboard",
+    "protected-routes"
+  ],
+  "last_updated": "2026-05-01T20:14:56.045Z"
+}

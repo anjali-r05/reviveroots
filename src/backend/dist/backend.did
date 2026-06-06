@@ -1,0 +1,409 @@
+type UserTraditionPrefs = 
+ record {
+   heritageLanguages: vec text;
+   heritageRegions: vec text;
+   savedItemIds: vec ItemId;
+   updatedAt: Timestamp;
+   userId: UserId;
+ };
+type UserProfileInput = 
+ record {
+   email: text;
+   fullName: text;
+   heritageRegion: text;
+   languageInterests: vec text;
+ };
+type UserProfile = 
+ record {
+   createdAt: Timestamp;
+   email: text;
+   fullName: text;
+   heritageRegion: text;
+   languageInterests: vec text;
+   lastLoginAt: Timestamp;
+   principalId: UserId;
+ };
+type UserId = principal;
+type UserActivitySummary = 
+ record {
+   arCaptures: nat;
+   coursesEnrolled: nat;
+   festivalPlans: nat;
+   heritageScans: nat;
+   languageLessons: nat;
+   ordersPlaced: nat;
+   storiesSaved: nat;
+ };
+type TraditionItem = 
+ record {
+   category: TraditionCategory;
+   createdAt: Timestamp;
+   description: text;
+   id: ItemId;
+   imageUrl: text;
+   languages: vec text;
+   region: text;
+   steps: vec text;
+   tags: vec text;
+   title: text;
+ };
+type TraditionCategory = 
+ variant {
+   celebration;
+   clothing;
+   custom;
+   dance;
+   folkSong;
+   recipe;
+   ritual;
+   spiritualPractice;
+ };
+type Timestamp = int;
+type StoryItem = 
+ record {
+   createdAt: Timestamp;
+   description: text;
+   fileId: text;
+   id: ItemId;
+   mediaType: MediaType;
+   narration: text;
+   peopleTagged: vec text;
+   tags: vec text;
+   title: text;
+   updatedAt: Timestamp;
+   userId: UserId;
+   yearApprox: opt nat;
+ };
+type SellerStats = 
+ record {
+   rating: nat;
+   sellerId: UserId;
+   totalListings: nat;
+   totalOrders: nat;
+   totalRevenue: nat;
+ };
+type ProductCategory = 
+ variant {
+   art;
+   artisanProduct;
+   book;
+   craft;
+   instrument;
+   jewelry;
+   textile;
+ };
+type OrderStatus = 
+ variant {
+   cancelled;
+   delivered;
+   paid;
+   pending;
+   shipped;
+ };
+type Order = 
+ record {
+   buyerId: UserId;
+   createdAt: Timestamp;
+   id: ItemId;
+   listingId: ItemId;
+   quantity: nat;
+   sellerId: UserId;
+   shippingAddress: text;
+   status: OrderStatus;
+   stripeSessionId: text;
+   totalPrice: nat;
+   updatedAt: Timestamp;
+ };
+type MentorBooking = 
+ record {
+   createdAt: Timestamp;
+   durationMinutes: nat;
+   id: ItemId;
+   instructorId: UserId;
+   notes: text;
+   scheduledAt: Timestamp;
+   status: text;
+   userId: UserId;
+ };
+type MediaType = 
+ variant {
+   handwrittenNote;
+   letter;
+   photo;
+   video;
+   voiceNote;
+ };
+type Listing = 
+ record {
+   category: ProductCategory;
+   createdAt: Timestamp;
+   description: text;
+   id: ItemId;
+   imageUrls: vec text;
+   isActive: bool;
+   price: nat;
+   region: text;
+   sellerId: UserId;
+   stock: nat;
+   title: text;
+   updatedAt: Timestamp;
+ };
+type LanguageProgress = 
+ record {
+   conversationLevel: text;
+   currentLesson: nat;
+   languageChosen: text;
+   lastActiveAt: Timestamp;
+   pronunciationScore: nat;
+   scriptsLearned: vec text;
+   startedAt: Timestamp;
+   streakDays: nat;
+   totalLessonsCompleted: nat;
+   userId: UserId;
+   wordsLearned: nat;
+ };
+type ItemId = nat;
+type HeritageProfile = 
+ record {
+   ancestryInsights: text;
+   createdAt: Timestamp;
+   familyBackground: text;
+   festivals: vec text;
+   foods: vec text;
+   forgottenCustoms: vec text;
+   grandparentsOrigin: text;
+   language: text;
+   migrationStory: text;
+   region: text;
+   surname: text;
+   traditionalOccupations: vec text;
+   updatedAt: Timestamp;
+   userId: UserId;
+ };
+type FestivalPlan = 
+ record {
+   createdAt: Timestamp;
+   familyParticipants: vec text;
+   festivalId: ItemId;
+   id: ItemId;
+   notes: text;
+   reminderAt: opt Timestamp;
+   updatedAt: Timestamp;
+   userId: UserId;
+ };
+type Festival = 
+ record {
+   celebrationGuide: text;
+   clothingSuggestions: vec text;
+   createdAt: Timestamp;
+   date: text;
+   description: text;
+   id: ItemId;
+   imageUrl: text;
+   languages: vec text;
+   meaning: text;
+   name: text;
+   recipes: vec text;
+   region: text;
+   rituals: vec text;
+ };
+type FamilyTreeNode = 
+ record {
+   era: text;
+   name: text;
+   region: text;
+   relation: text;
+ };
+type FamilyTimeline = 
+ record {
+   createdAt: Timestamp;
+   description: text;
+   itemIds: vec ItemId;
+   title: text;
+   updatedAt: Timestamp;
+   userId: UserId;
+ };
+type Enrollment = 
+ record {
+   certified: bool;
+   completedAt: opt Timestamp;
+   courseId: ItemId;
+   enrolledAt: Timestamp;
+   id: ItemId;
+   progressPct: nat;
+   userId: UserId;
+ };
+type DailyLesson = 
+ record {
+   audioUrl: text;
+   content: text;
+   createdAt: Timestamp;
+   id: ItemId;
+   language: text;
+   lessonNumber: nat;
+   practiceWords: vec text;
+   title: text;
+ };
+type CourseCategory = 
+ variant {
+   calligraphy;
+   cooking;
+   dance;
+   martialArts;
+   music;
+   pottery;
+   regionalArts;
+   weaving;
+   yoga;
+ };
+type Course = 
+ record {
+   category: CourseCategory;
+   createdAt: Timestamp;
+   description: text;
+   durationMinutes: nat;
+   id: ItemId;
+   imageUrl: text;
+   instructorId: UserId;
+   instructorName: text;
+   isLive: bool;
+   maxParticipants: nat;
+   price: nat;
+   scheduledAt: opt Timestamp;
+   title: text;
+ };
+type AncestryInsights = 
+ record {
+   familyTreeNodes: vec FamilyTreeNode;
+   festivals: vec text;
+   foods: vec text;
+   forgottenCustoms: vec text;
+   migrationStory: text;
+   traditionalOccupations: vec text;
+ };
+type ARCapture = 
+ record {
+   description: text;
+   id: text;
+   imageData: text;
+   sceneId: text;
+   timestamp: Timestamp;
+   title: text;
+   userId: UserId;
+ };
+service : {
+  addCourse: (title: text, description: text, category: CourseCategory,
+   instructorName: text, price: nat, durationMinutes: nat, isLive: bool,
+   scheduledAt: opt Timestamp, maxParticipants: nat, imageUrl: text) ->
+   (Course);
+  addFamilyMember: (planId: ItemId, member: text) -> (bool);
+  addFestival: (name: text, description: text, meaning: text, rituals:
+   vec text, celebrationGuide: text, recipes: vec text, clothingSuggestions:
+   vec text, date: text, region: text, languages: vec text, imageUrl:
+   text) -> (Festival);
+  addLesson: (language: text, title: text, content: text, audioUrl: text,
+   practiceWords: vec text) -> (DailyLesson);
+  addListing: (title: text, description: text, price: nat, category:
+   ProductCategory, imageUrls: vec text, stock: nat, region: text) ->
+   (Listing);
+  addStoryItem: (title: text, description: text, mediaType: MediaType,
+   fileId: text, tags: vec text, peopleTagged: vec text, yearApprox: 
+   opt nat, narration: text) -> (StoryItem);
+  addTradition: (title: text, description: text, category: TraditionCategory,
+   region: text, languages: vec text, imageUrl: text, steps: vec text, tags:
+   vec text) -> (TraditionItem);
+  bookMentor: (instructorId: UserId, scheduledAt: Timestamp, durationMinutes:
+   nat, notes: text) -> (MentorBooking);
+  cancelMentorBooking: (bookingId: ItemId) -> (bool);
+  completeCourse: (enrollmentId: ItemId) -> (opt Enrollment);
+  completeLesson: (lessonId: ItemId, score: nat) -> (opt LanguageProgress);
+  createFestivalPlan: (festivalId: ItemId, reminderAt: opt Timestamp,
+   familyParticipants: vec text, notes: text) -> (FestivalPlan);
+  createOrder: (listingId: ItemId, sellerId: UserId, quantity: nat,
+   totalPrice: nat, stripeSessionId: text, shippingAddress: text) -> (
+   Order);
+  deleteARCapture: (id: text) -> (bool);
+  deleteFestivalPlan: (planId: ItemId) -> (bool);
+  deleteHeritageProfile: () -> (bool);
+  deleteListing: (id: ItemId) -> (bool);
+  deleteStoryItem: (id: ItemId) -> (bool);
+  enrollInCourse: (courseId: ItemId) -> (Enrollment);
+  filterFestivalsByRegion: (region: text) -> (vec Festival) query;
+  filterTraditionsByRegion: (region: text) -> (vec TraditionItem) query;
+  filterTraditionsByType: (traditionType: text) -> (vec TraditionItem) query;
+  generateAncestryInsights: (surname: text, region: text, language: text,
+   familyBackground: text, grandparentsOrigin: text) -> (AncestryInsights);
+  generateNarrative: (itemId: ItemId) -> (opt text);
+  getARCaptures: () -> (vec ARCapture) query;
+  getCourse: (id: ItemId) -> (opt Course) query;
+  getFestival: (id: ItemId) -> (opt Festival) query;
+  getHeritageProfile: () -> (opt HeritageProfile) query;
+  getLanguageProgress: () -> (opt LanguageProgress) query;
+  getLesson: (id: ItemId) -> (opt DailyLesson) query;
+  getLessonsByLanguage: (language: text) -> (vec DailyLesson) query;
+  getListing: (id: ItemId) -> (opt Listing) query;
+  getMyBuyerOrders: () -> (vec Order) query;
+  getMyEnrollments: () -> (vec Enrollment) query;
+  getMyFamilyTimeline: () -> (opt FamilyTimeline) query;
+  getMyFestivalPlans: () -> (vec FestivalPlan) query;
+  getMyListings: () -> (vec Listing) query;
+  getMyMentorBookings: () -> (vec MentorBooking) query;
+  getMySellerOrders: () -> (vec Order) query;
+  getMySellerStats: () -> (SellerStats) query;
+  getMyStoryItems: () -> (vec StoryItem) query;
+  getMyTraditionPrefs: () -> (opt UserTraditionPrefs) query;
+  getPersonalizedFestivals: (regions: vec text, languages: vec text) ->
+   (vec Festival) query;
+  getRecommendedTraditions: () -> (vec TraditionItem) query;
+  getStoryItem: (id: ItemId) -> (opt StoryItem) query;
+  getTradition: (id: ItemId) -> (opt TraditionItem) query;
+  getUserActivitySummary: () ->
+   (variant {
+      err: text;
+      ok: UserActivitySummary;
+    }) query;
+  getUserProfile: () -> (variant {
+                           err: text;
+                           ok: UserProfile;
+                         }) query;
+  listActiveListings: () -> (vec Listing) query;
+  listCourses: () -> (vec Course) query;
+  listCoursesByCategory: (category: text) -> (vec Course) query;
+  listFestivals: () -> (vec Festival) query;
+  listTraditions: () -> (vec TraditionItem) query;
+  listingsByCategory: (category: text) -> (vec Listing) query;
+  removeFamilyMember: (planId: ItemId, member: text) -> (bool);
+  saveARCapture: (sceneId: text, imageData: text, title: text) -> (ARCapture);
+  saveHeritageProfile: (surname: text, region: text, language: text,
+   familyBackground: text, grandparentsOrigin: text, ancestryInsights: 
+   text, migrationStory: text, forgottenCustoms: vec text,
+   traditionalOccupations: vec text, festivals: vec text, foods: vec text) ->
+   (HeritageProfile);
+  saveTraditionItem: (itemId: ItemId) -> (bool);
+  saveUserProfile: (input: UserProfileInput) -> (variant {
+                                                   err: text;
+                                                   ok;
+                                                 });
+  setTraditionPrefs: (heritageRegions: vec text, heritageLanguages:
+   vec text) -> (UserTraditionPrefs);
+  startLanguage: (languageChosen: text) -> (LanguageProgress);
+  unsaveTraditionItem: (itemId: ItemId) -> (bool);
+  updateCourseProgress: (enrollmentId: ItemId, progressPct: nat) ->
+   (opt Enrollment);
+  updateFestivalPlan: (planId: ItemId, reminderAt: opt Timestamp,
+   familyParticipants: vec text, notes: text) -> (opt FestivalPlan);
+  updateLanguageProgress: (currentLesson: nat, streakDays: nat, wordsLearned:
+   nat, pronunciationScore: nat, conversationLevel: text, scriptsLearned:
+   vec text) -> (opt LanguageProgress);
+  updateLastLogin: () -> (variant {
+                            err: text;
+                            ok;
+                          });
+  updateListing: (id: ItemId, title: text, description: text, price: 
+   nat, stock: nat, isActive: bool) -> (opt Listing);
+  updateOrderStatus: (orderId: ItemId, status: OrderStatus) -> (opt Order);
+  updateStoryItem: (id: ItemId, title: text, description: text, tags:
+   vec text, narration: text) -> (opt StoryItem);
+  upsertFamilyTimeline: (title: text, description: text, itemIds:
+   vec ItemId) -> (FamilyTimeline);
+}
